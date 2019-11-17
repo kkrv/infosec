@@ -19,6 +19,9 @@ class Point:
     def __str__(self):
         return '{\n\tx: ' + str(self.x) + '\n\ty: ' + str(self.y) + '\n}'
 
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
     def __add__(self, other):
         if self.x != other.x:
             return self.add(other)

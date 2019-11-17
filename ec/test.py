@@ -49,6 +49,21 @@ class TestEC(unittest.TestCase):
         k = 221
         self.assertTrue(a.mul(k).is_on_curve())
 
+    def test_commutative_pr(self):
+        a = Point.generate_point()
+        b = Point.generate_point()
+        self.assertEqual(a + b, b + a)
+
+    def test_associative_pr(self):
+        a = Point.generate_point()
+        b = Point.generate_point()
+        c = Point.generate_point()
+        r1 = a + b  # r1 = (a + b) + c
+        r1 = r1 + c
+        r2 = b + c  # r2 = a + (b + c)
+        r2 = a + r2
+        self.assertEqual(r1, r2)
+
 
 if __name__ == '__main__':
     unittest.main()
